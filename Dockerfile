@@ -1,17 +1,15 @@
 FROM ubuntu:18.04
 
-MAINTAINER z4yx <z4yx@users.noreply.github.com>
+MAINTAINER lukipedio <l.colombini@caen.it>
 
 # build with docker build --build-arg VIVADO_VERSION=2018.1 --build-arg VIVADO_TAR_FILE=Xilinx_Vivado_SDK_2018.1_0405_1.tar.gz -t vivado:2018.1 .
-
-ARG UBUNTU_MIRROR=mirror.tuna.tsinghua.edu.cn
 
 #install dependences for:
 # * downloading Vivado (wget)
 # * xsim (gcc build-essential to also get make)
 # * MIG tool (libglib2.0-0 libsm6 libxi6 libxrender1 libxrandr2 libfreetype6 libfontconfig)
 # * CI (git)
-RUN sed -i.bak s/archive.ubuntu.com/${UBUNTU_MIRROR}/g /etc/apt/sources.list && \
+RUN \
   apt-get update && apt-get install -y \
   build-essential \
   sudo \
